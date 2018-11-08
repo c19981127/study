@@ -1,0 +1,4 @@
+using commands :
+qmake -project
+qmake (dir.name).pro QT+=widgets
+make
