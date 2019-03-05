@@ -1,0 +1,5 @@
+there is no makefile but just foo.c
+
+you can use command "make foo" to complie the source file 
+
+the output is "CC  foo foo.c"
