@@ -21,7 +21,7 @@ int main(int argc,char *argv[])
 	char op_char = 'O';
 	srand((unsigned int )getpid());
 	sem_id = semget((key_t)1234,1,0666 | IPC_CREAT);
-	
+
 	if(argc > 1)
 	{
 		if(!set_semvalue())
@@ -47,9 +47,9 @@ int main(int argc,char *argv[])
 		pause_time = rand() % 2;
 		sleep(pause_time);
 	}
-	
+
 	printf("\n%d -finished", getpid());
-	
+
 	if(argc > 1)
 	{
 		sleep(10);
