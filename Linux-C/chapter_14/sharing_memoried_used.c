@@ -32,7 +32,7 @@ int main()
   shared_stuff = (struct sharing_memories *)shared_memory;
   while(running)
   {
-    while(shared_stuff->written_by_you == 1)
+    while(shared_stuff->written_by_you == 1) // there is the same problem as before.mark here 
     {
       sleep(1);
       printf("waiting for client.. \n");

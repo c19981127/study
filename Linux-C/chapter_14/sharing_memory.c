@@ -29,7 +29,10 @@ int main()
   printf("Memori attached at %X \n",(int)shared_memory);
 
   shared_stuff = (struct sharing_memories *)shared_memory;
-  shared_stuff->written_by_you = 0;
+  printf("%d ,%d \n",sizeof(*shared_stuff),sizeof(struct sharing_memories));
+
+
+  shared_stuff->written_by_you = 0; //there is a  problem and the program runs incorrectly
   while(running)
   {
     if(shared_stuff->written_by_you)
