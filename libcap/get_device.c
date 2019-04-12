@@ -1,6 +1,6 @@
 #include <pcap.h>
 #include <time.h>
-//get ip adress  nad umask
+//get ip adress  and  umask
 void get_ip_mask(const char *device,bpf_u_int32 * netp,bpf_u_int32 *maskp,char *errbuf);
 //catch packages
 void get_package(pcap_t * device, char * errbuf);
