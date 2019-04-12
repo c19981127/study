@@ -47,9 +47,8 @@ int main()
     exit(1);
   }
 
-  /* wait loop forever */
   int id = 0;
-  pcap_loop(device, -1, getPacket,(u_char *)&id);
+  pcap_loop(device, 1, getPacket,(u_char *)&id);
 
   pcap_close(device);
 
