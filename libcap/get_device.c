@@ -10,6 +10,25 @@ void get_ip_mask(const char *device,bpf_u_int32 * netp,bpf_u_int32 *maskp,char *
 void getPacket(u_char * arg, const struct pcap_pkthdr * pkthdr, const u_char * packet);
 void getIP(u_char * packet);
 void getUDP(u_char * packet);
+struct ip_header
+{
+#ifdef WORDS_BIGENDIAN
+    u_int8_t ip_version:4,
+        ip_header_length:4;
+#else
+    u_int8_t ip_header_length:4,
+         ip_version:4;
+#endif
+    u_int8_t ip_tos;      /*type of service */
+    u_int16_t ip_length;    /*length */
+    u_int16_t ip_id;    /*identity */
+    u_int16_t ip_off;    /* offset */
+    u_int8_t ip_ttl;    /*time to live*/
+    u_int8_t ip_protocol;    /* type of protocol*/
+    u_int16_t ip_chechsum;  /* chechsum */
+    struct in_addr source;
+    struct in_addr dest;
+};
 int main()
 {
   char errbuf[PCAP_ERRBUF_SIZE],*device;
@@ -91,17 +110,13 @@ void getPacket(u_char * arg, const struct pcap_pkthdr * pkthdr, const u_char * p
 }
 void getIP(u_char * packet)
 {
-  struct iphdr * IP = (struct iphdr *)packet;
-  __be32 * ip_s = IP->saddr;
-  __be32 * ip_d = IP->daddr;
-  struct in_addr add;
-  add.s_addr = ip_s;
-  char * ip_s_n = inet_ntoa(add);
-  add.s_addr = ip_d;
-  char * ip_d_n = inet_ntoa(add);
-  printf("the ip version is : %s \n",IP->ihl);
-  printf("the Source IP is %s \n",ip_s_n);
-  printf("the Destination IP is %s \n",ip_d_n);
+  struct  ip_header * ipr = (struct ip_header *)(packet+14);
+  switch(ipr->ip_protocol)
+             {
+                case 6: /* TCP */
+                    printf("%s  \n %s \n", inet_ntoa(ipr->source),inet_ntoa(ipr->dest));
+                    break;
+            }
 }
 void getUDP(u_char * packet)
 {
