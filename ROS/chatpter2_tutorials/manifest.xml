@@ -1,0 +1,17 @@
+<package>
+  <description brief="chatpter2_tutorials">
+
+     chatpter2_tutorials
+
+  </description>
+  <author>chengpipi</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/chatpter2_tutorials</url>
+  <depend package="std_msgs"/>
+  <depend package="rospy"/>
+  <depend package="roscpp"/>
+
+</package>
+
+

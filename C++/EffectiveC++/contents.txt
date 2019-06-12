@@ -1,0 +1,21 @@
+<1>View C++ as a federation of languages.
+	C++ is combined with four sublanguage as below:
+	a>C.  C is the base of C++ , which defines blocks , statements, built-in           d ata types.
+	b>Object-Oriented C++.  Object-Oriented C++ defines classes,inhertance,  	  encapsulation,polymorphism and virtual.
+	c>Template C++. Template C++ defines generic pragramming.
+	d>STL. STL is a library of templates ,we call is standard library.it 		  defines containers , iterators,algorithms and function ojects.
+
+<2>Prefer consts ,enums,and inlines to defines.
+	a>for constant value , using "const int data = 123" not "#define DATA = 	  123".
+	b>if you do not want others to get the pointer of reference to your 		  const value,enum is a good choice.Because get the adress of an enum is	  not allowed.
+	c>if you want to define a macros like functions , just use inline 		  functions to replace it.
+
+<3>Use const whenever possible.
+	a>define some var as const to help the complier to find error.
+	b>the complier is bitwise constness ,but you should be conceptual 		  constness while pragramming.
+	c>when the const and non-const member function is same , to avoid code 		  repeats , the non-const member function should use the const one.
+
+<4>Make sure that the object are initialized before they are used.
+	a>do the manual initialization for the built-in data type .
+	b>constrcution function should use member initialization not assignment.	  the orders of the members in initialization list should be same as the	  orders of statement in the class.
+	c>use local static objects to replace non-local static objects in order 	  to avoid initialization orders between compling units.
